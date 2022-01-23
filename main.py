@@ -1,3 +1,5 @@
+# 🥸Basic principle
+
 # item1 = "phone"
 # item1_price = 100
 # item1_quantity = 5
@@ -11,6 +13,9 @@
 # print(type(item1_price_total))  # int
 
 
+
+
+#🥸 Practice 1::
 class Item:
     def __init__(self, name):
         # ✍️this init function is related and called with 'Item()' below.
