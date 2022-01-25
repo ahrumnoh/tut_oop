@@ -85,9 +85,47 @@
 # print(item2.quantity)
 
 
-# # 🥸 Practice 4::
+# # 🥸🥸 Practice 4::
 # class Item:
-#     def __init__(self, name, price, quantity):
+# def __init__(self, name, price, quantity):
+#     self.name = name
+#     self.price = price
+#     self.quantity = quantity
+
+# def calculate_total_price(self):
+#     return self.price * self.quantity
+
+
+# Let's compare - part1
+# item1 = Item("😭cheap Phone", 100, 3)
+# item2 = Item("👩‍💻ipad", 2300, 3)
+
+# #Let's compare - part1 & part2
+# item1 = Item("😭cheap Phone", "100", 3)
+# item2 = Item("👩‍💻ipad", "2300", 3)  #--> if you type integer with "", result will be  100100100 + 230023002300
+
+# print(item1.calculate_total_price())
+# print(item2.calculate_total_price())
+
+
+###BREAK TIME###
+
+
+# # 🥸🥸 Practice 4:: if you want to prevent the integer & Quantity, not to be negative
+
+
+# class Item:
+
+#     pay_rate = 0.8  # The pay rate after 20% discount
+
+#     def __init__(self, name: str, price: float, quantity):
+#         # Run validations to the received arguments
+#         assert (
+#             price >= 0
+#         ), f"Price {price} is not greater than  or equal to zero!"  # what is f?
+#         assert quantity >= 0, f"Price {price} is not greater than  or equal to zero!"
+
+#         # Assign to self object
 #         self.name = name
 #         self.price = price
 #         self.quantity = quantity
@@ -96,11 +134,60 @@
 #         return self.price * self.quantity
 
 
-# item1 = Item("😭cheap Phone", 100, 3)
+# Let's compare - part1
+# item1 = Item(
+#     "😭cheap Phone", 100, -3
+# )  # if you put negative in quantity, AssertionError appeared
+# item2 = Item(
+#     "👩‍💻ipad", -2300, 3
+# )  # if you put negative in price, AssertionError appeared
+
+# item1 = Item("😭cheap Phone", 100, 3)  # only positive integer can be possible like this
 # item2 = Item("👩‍💻ipad", 2300, 3)
 
-# print(item1.calculate_total_price())
-# print(item2.calculate_total_price())
+# print(Item.__dict__)  # giving all the attricutes for class level
+# print(item1.__dict__)  # giving all the attricutes for instance level
 
 
-###BREAK TIME###
+# # 🥸🥸 Practice 5::
+
+
+class Item:
+
+    pay_rate = 0.8  # The pay rate after 20% discount
+
+    def __init__(self, name: str, price: float, quantity):
+        # Run validations to the received arguments
+        assert (
+            price >= 0
+        ), f"Price {price} is not greater than  or equal to zero!"  # what is f?
+        assert quantity >= 0, f"Price {price} is not greater than  or equal to zero!"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price * self.quantity
+
+    def apply_discount(self):
+        self.price = self.price * self.pay_rate
+
+
+item1 = Item("😭cheap Phone", 100, 3)  # only positive integer can be possible like this
+item1.apply_discount()
+print(item1.price)
+
+item2 = Item("Ipad2", 1000, 1)
+item2.pay_rate = 0.8
+item2.apply_discount()
+print(item2.price)
+
+
+item2 = Item("Ipad2", 1000, 1)  # same as item2 above, but different function
+item2.apply_discount()
+print(item2.price)
+
+
+##BREAK TIME## 42:06
